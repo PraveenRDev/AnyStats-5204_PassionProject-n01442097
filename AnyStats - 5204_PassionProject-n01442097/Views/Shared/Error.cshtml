@@ -1,0 +1,17 @@
+﻿@model AnyStats___5204_PassionProject_n01442097.Models.ViewModels.ErrorModel
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+@if (@Model.ErrorMessage != null)
+{
+    <h2 class="text-danger">@Model.ErrorMessage</h2>
+    @Html.ActionLink("Back to Details", "Details", new { id = Model.StatId })
+}
+else
+{
+    <h2 class="text-danger">An error occurred while processing your request.</h2>
+}
+

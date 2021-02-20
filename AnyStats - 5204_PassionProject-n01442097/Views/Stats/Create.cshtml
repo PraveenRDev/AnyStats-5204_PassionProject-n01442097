@@ -1,0 +1,45 @@
+﻿ @model AnyStats___5204_PassionProject_n01442097.Models.StatDto
+
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Create Statistics</h2>
+<div class="btn btn-default">
+    @Html.ActionLink("Back to List", "List")
+</div>
+<form method="post" action="Create">
+    <div class="form-group">
+        <label for="name">Stat Name</label>
+        <input type="text" id="name" name="StatName" class="form-control" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="StatDescription" class="form-control" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="xaxis">X-Axis Name</label>
+        <input type="text" id="xaxis" name="XAxis" class="form-control" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="yaxis">Y-Axis Name</label>
+        <input type="text" id="yaxis" name="YAxis" class="form-control" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="public">Public</label>
+        <input type="checkbox" id="public" value="true" name="isPublic"/>
+    </div>
+
+    <div id="divCont">
+        <div>
+            <input type="text" name="XValue" placeholder="x-value" class="form-c" required/>
+            <input type="number" step="0.001" name="YValue" placeholder="y-value" required/>
+            <input type="button" onclick="AddTextBox()" value="Add Coordinates" />
+        </div>
+    </div>
+    <input type="submit" value="Create" class="btn btn-success "/>
+</form>
+<script src="~/Scripts/stats.js"></script>

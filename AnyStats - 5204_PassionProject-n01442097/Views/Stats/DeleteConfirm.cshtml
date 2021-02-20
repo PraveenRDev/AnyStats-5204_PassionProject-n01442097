@@ -1,0 +1,22 @@
+﻿@model AnyStats___5204_PassionProject_n01442097.Models.StatDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>DeleteConfirm</h2>
+<h3>Are you sure you want to delete this Statistic?</h3>
+<br/>
+<h4>Stat Name</h4>
+<p>@Model.StatName</p>
+
+<h4>Stat Description</h4>
+<p>@Model.StatDescription</p>
+
+@using (Html.BeginForm("Delete", "Stats", new { id = Model.StatId }))
+{
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-default" /> |
+    @Html.ActionLink("Back to Details", "Details", new { id = Model.StatId })
+</div>
+}

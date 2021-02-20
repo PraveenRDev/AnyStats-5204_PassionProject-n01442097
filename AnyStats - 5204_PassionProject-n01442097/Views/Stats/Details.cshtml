@@ -1,0 +1,92 @@
+﻿@model AnyStats___5204_PassionProject_n01442097.Models.ViewModels.ShowStats
+@{
+    ViewBag.Title = "Details";
+}
+<script>
+    window.onload = function () {
+        // encode model values to a js variable
+        var model = @Html.Raw(Json.Encode(Model));
+        console.log(model)
+        let chartType = "bar"
+        let newChart;
+        const chart = document.getElementById("chartsSelect");
+        var color = [];
+
+        // generate dynamic colors
+        var dynamicColors = function () {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return "rgb(" + r + "," + g + "," + b + ")";
+        };
+
+        for (var i in model.coordinates.YValues) {
+            color.push(dynamicColors());
+        }
+
+
+        const generateChart = () => {
+            const ctx = document.getElementById("chartJs").getContext("2d");
+            newChart = new Chart(ctx, {
+                type: chartType,
+                data: {
+                    labels: model.coordinates.XValues,
+                    datasets: [
+                        {
+                            label: model.stat.YAxis,
+                            data: model.coordinates.YValues,
+                            backgroundColor: color,
+                            hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true,
+                                },
+                            },
+                        ],
+                    },
+                },
+            });
+        }
+
+        // handle chart change
+        chart.onchange = function () {
+            newChart.destroy();
+            chartType = chart.value;
+            generateChart();
+        }
+        // generate chart
+        generateChart();
+}
+</script>
+
+<h1>@Model.stat.StatName</h1>
+<span class="btn btn-default">
+    @Html.ActionLink("Back to List", "List")
+</span>
+<span class="btn btn-default">
+    @Html.ActionLink("Delete Chart", "DeleteConfirm", new { id = Model.stat.StatId, authorId = Model.stat.AuthorId })
+</span>
+<span class="btn btn-default">
+    @Html.ActionLink("Update Chart", "Edit", new { id = Model.stat.StatId, authorId = Model.stat.AuthorId })
+</span>
+<h4>Description</h4>
+<p>@Model.stat.StatDescription</p>
+<select id="chartsSelect">
+    <option value="bar">Bar Chart</option>
+    <option value="pie">Pie Chart</option>
+    <option value="line">Line Chart</option>
+    <option value="radar">Rador Chart</option>
+    <option value="polarArea">Polar Area Chart</option>
+    <option value="doughnut">Doughnut Chart</option>
+
+</select>
+<div class="chart-container" style="position: relative; width:30vw">
+    <canvas id="chartJs" class="chart" width="200" height="200"></canvas>
+</div>

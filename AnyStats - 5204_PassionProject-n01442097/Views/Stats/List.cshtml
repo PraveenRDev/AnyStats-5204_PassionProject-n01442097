@@ -1,0 +1,19 @@
+﻿@model IEnumerable<AnyStats___5204_PassionProject_n01442097.Models.StatDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+
+<h1>All Statistics</h1>
+<span class="btn btn-default">
+    @Html.ActionLink("Create New", "Create")
+</span>
+<ul class="stat-list">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="/Stats/Details/@item.StatId">@Html.DisplayFor(modelItem => item.StatName)</a>
+        </li>
+    }
+</ul>
