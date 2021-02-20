@@ -2,15 +2,15 @@
 ## AnyStats
 The app allows users to create statistics both private and public and it represents them in charts.
 
-###FEATURES
+### FEATURES
 1. Users can create, update, delete and view statistics 
 2. Users can view stats in 5 different beautiful charts
 3. User Registration - Login
 4. Any user can view public stats and logged in users can view the 
 Stats that they created for private use.
 
-###Technologies
+### Technologies
 .net, MVC, Entity Framework, JS and ChartJS
 
-###References
+### References
 Varsity:- https://github.com/christinebittle/varsity_mvp
