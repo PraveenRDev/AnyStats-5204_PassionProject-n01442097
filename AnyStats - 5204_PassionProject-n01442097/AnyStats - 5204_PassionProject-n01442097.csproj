@@ -189,7 +189,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Microsoft\AspNet\Identity\Owin\SignInManager.cs" />
     <Compile Include="Migrations\202102151740138_stat.cs" />
     <Compile Include="Migrations\202102151740138_stat.Designer.cs">
       <DependentUpon>202102151740138_stat.cs</DependentUpon>
