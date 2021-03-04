@@ -189,29 +189,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102151740138_stat.cs" />
-    <Compile Include="Migrations\202102151740138_stat.Designer.cs">
-      <DependentUpon>202102151740138_stat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102151745332_stat1.cs" />
-    <Compile Include="Migrations\202102151745332_stat1.Designer.cs">
-      <DependentUpon>202102151745332_stat1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102151934220_stat-user-key.cs" />
-    <Compile Include="Migrations\202102151934220_stat-user-key.Designer.cs">
-      <DependentUpon>202102151934220_stat-user-key.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102151942427_Coordinate.cs" />
-    <Compile Include="Migrations\202102151942427_Coordinate.Designer.cs">
-      <DependentUpon>202102151942427_Coordinate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102151945127_Coordinate-stat.cs" />
-    <Compile Include="Migrations\202102151945127_Coordinate-stat.Designer.cs">
-      <DependentUpon>202102151945127_Coordinate-stat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102190107112_double yValue.cs" />
-    <Compile Include="Migrations\202102190107112_double yValue.Designer.cs">
-      <DependentUpon>202102190107112_double yValue.cs</DependentUpon>
+    <Compile Include="Migrations\202103032315391_anystatapp.cs" />
+    <Compile Include="Migrations\202103032315391_anystatapp.Designer.cs">
+      <DependentUpon>202103032315391_anystatapp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -307,23 +287,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102151740138_stat.resx">
-      <DependentUpon>202102151740138_stat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102151745332_stat1.resx">
-      <DependentUpon>202102151745332_stat1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102151934220_stat-user-key.resx">
-      <DependentUpon>202102151934220_stat-user-key.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102151942427_Coordinate.resx">
-      <DependentUpon>202102151942427_Coordinate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102151945127_Coordinate-stat.resx">
-      <DependentUpon>202102151945127_Coordinate-stat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102190107112_double yValue.resx">
-      <DependentUpon>202102190107112_double yValue.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103032315391_anystatapp.resx">
+      <DependentUpon>202103032315391_anystatapp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

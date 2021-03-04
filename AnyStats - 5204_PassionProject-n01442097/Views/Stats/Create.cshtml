@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 <h2>Create Statistics</h2>
-<div class="btn btn-default">
+<div class="btn btn-default submit">
     @Html.ActionLink("Back to List", "List")
 </div>
 <form method="post" action="Create">
@@ -34,12 +34,14 @@
     </div>
 
     <div id="divCont">
-        <div>
-            <input type="text" name="XValue" placeholder="x-value" class="form-c" required/>
-            <input type="number" step="0.001" name="YValue" placeholder="y-value" required/>
-            <input type="button" onclick="AddTextBox()" value="Add Coordinates" />
+        <div class="input-group">
+            <input type="text" name="XValue" class="form-control" placeholder="x-value" required />
+            <span class="input-group-btn" style="width:0px;"></span>
+            <input type="number" step="0.001" class="form-control" name="YValue" placeholder="y-value" required />
+            <span class="input-group-btn" style="width:10px;"></span>
+            <input type="button" onclick="AddTextBox()" class="form-control" value="Add Coordinates" />
         </div>
     </div>
-    <input type="submit" value="Create" class="btn btn-success "/>
+    <input type="submit" value="Create" class="btn btn-success submit"/>
 </form>
 <script src="~/Scripts/stats.js"></script>

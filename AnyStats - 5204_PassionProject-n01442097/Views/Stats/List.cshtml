@@ -6,7 +6,7 @@
 
 
 <h1>All Statistics</h1>
-<span class="btn btn-default">
+<span class="btn btn-default submit">
     @Html.ActionLink("Create New", "Create")
 </span>
 <ul class="stat-list">
@@ -17,3 +17,18 @@
         </li>
     }
 </ul>
+<div class="paginate">
+    <div class="pagination">
+        @{
+            if (Convert.ToInt32(ViewData["totalCount"]) > Convert.ToInt32(ViewData["PerPage"]))
+            {
+                int PrevPage = Convert.ToInt32(ViewData["PageNum"]) - 1;
+                int NextPage = Convert.ToInt32(ViewData["PageNum"]) + 1;
+                @Html.ActionLink("Prev", "List", new { PageNum = PrevPage })
+                @ViewData["PageSummary"]
+                @Html.ActionLink("Next", "List", new { PageNum = NextPage })
+            }
+
+        }
+    </div>
+</div>

@@ -67,13 +67,13 @@
 </script>
 
 <h1>@Model.stat.StatName</h1>
-<span class="btn btn-default">
+<span class="btn btn-default submit">
     @Html.ActionLink("Back to List", "List")
 </span>
-<span class="btn btn-default">
+<span class="btn btn-default submit">
     @Html.ActionLink("Delete Chart", "DeleteConfirm", new { id = Model.stat.StatId, authorId = Model.stat.AuthorId })
 </span>
-<span class="btn btn-default">
+<span class="btn btn-default submit">
     @Html.ActionLink("Update Chart", "Edit", new { id = Model.stat.StatId, authorId = Model.stat.AuthorId })
 </span>
 <h4>Description</h4>

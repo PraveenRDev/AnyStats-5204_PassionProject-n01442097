@@ -30,13 +30,14 @@ namespace AnyStats___5204_PassionProject_n01442097.App_Start
         /// </summary>
         /// <returns>A list of Stats including their ID and Name.</returns>
         /// <example>
-        /// GET: api/StatsData/GetPublicStats
+        /// GET: api/StatsData/GetPublicStats/20/5
         /// </example>
+        [Route("api/StatsData/GetPublicStats/{StartIndex}/{PerPage}")]
         [ResponseType(typeof(IEnumerable<StatDto>))]
-        public IHttpActionResult GetPublicStats()
+        public IHttpActionResult GetPublicStats(int StartIndex, int PerPage)
         {
             // Get all public Statistics
-            List<Stat> Statistics = db.Stats.Where(Stat => Stat.isPublic == true).ToList();
+            List<Stat> Statistics = db.Stats.Where(Stat => Stat.isPublic == true).OrderBy(s => s.StatId).Skip(StartIndex).Take(PerPage).ToList();
             List<StatDto> StatsDtos = new List<StatDto> { };
 
             foreach(var Stat in Statistics)
@@ -52,18 +53,33 @@ namespace AnyStats___5204_PassionProject_n01442097.App_Start
         }
 
         /// <summary>
+        /// Gets the count of publicly shared Stats in the database alongside a status code (200 OK).
+        /// </summary>
+        /// <returns>An integer showing the count of public stats.</returns>
+        /// <example>
+        /// GET: api/StatsData/GetPublicStatsCount
+        /// </example>
+        [ResponseType(typeof(int))]
+        public IHttpActionResult GetPublicStatsCount()
+        {
+            // Get all public Statistics
+            var count = db.Stats.Where(Stat => Stat.isPublic == true).Count();
+            return Ok(count);
+        }
+
+        /// <summary>
         /// Gets a list of public Stats along with stats created by logged in user in the database alongside a status code (200 OK).
         /// </summary>
         /// <returns>A list of Stats(public and private) including their ID and Name.</returns>
         /// <example>
-        /// GET: api/StatsData/GetAllStats/1743c536-aaed-4c36-8363-d521dbfaee16
+        /// GET: api/StatsData/GetAllStats/1743c536-aaed-4c36-8363-d521dbfaee16/20/5
         /// </example>
-        [Route("api/StatsData/GetAllStats/{authorId}")]
+        [Route("api/StatsData/GetAllStats/{authorId}/{StartIndex}/{PerPage}")]
         [ResponseType(typeof(IEnumerable<StatDto>))]
-        public IHttpActionResult GetAllStats(string authorId)
+        public IHttpActionResult GetAllStats(string authorId, int StartIndex, int PerPage)
         {
             // Get all public Statistics
-            List<Stat> Statistics = db.Stats.Where(Stat => Stat.isPublic == true || Stat.AuthorId == authorId).ToList();
+            List<Stat> Statistics = db.Stats.Where(Stat => Stat.isPublic == true || Stat.AuthorId == authorId).OrderBy(s => s.StatId).Skip(StartIndex).Take(PerPage).ToList();
             List<StatDto> StatsDtos = new List<StatDto> { };
 
             foreach (var Stat in Statistics)
@@ -77,6 +93,24 @@ namespace AnyStats___5204_PassionProject_n01442097.App_Start
             }
             return Ok(StatsDtos);
         }
+
+
+        /// <summary>
+        /// Gets the count of public Stats along with stats created by logged in user in the database alongside a status code (200 OK).
+        /// </summary>
+        /// <returns>An integer showing the count of Stats(public and private).</returns>
+        /// <example>
+        /// GET: api/StatsData/GetAllStatsCount
+        /// </example>
+        [Route("api/StatsData/GetAllStatsCount/{authorId}")]
+        [ResponseType(typeof(int))]
+        public IHttpActionResult GetAllStatsCount(string authorId)
+        {
+            // Get all public Statistics
+            var count = db.Stats.Where(Stat => Stat.isPublic == true || Stat.AuthorId == authorId).Count();
+            return Ok(count);
+        }
+
 
         /// <summary>
         /// Adds stats to database.
@@ -141,6 +175,7 @@ namespace AnyStats___5204_PassionProject_n01442097.App_Start
                 XAxis = Stat.XAxis,
                 YAxis = Stat.YAxis,
                 AuthorId = Stat.AuthorId,
+                isPublic = Stat.isPublic,
                 DateCreated= Stat.DateCreated
             };
 

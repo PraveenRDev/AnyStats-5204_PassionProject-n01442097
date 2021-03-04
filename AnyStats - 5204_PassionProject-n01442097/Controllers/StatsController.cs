@@ -40,24 +40,62 @@ namespace AnyStats___5204_PassionProject_n01442097.Controllers
         }
 
         // GET: Stats/List
-        public ActionResult List()
+        public ActionResult List(int PageNum = 0)
         {
-            string url;
+            string url, countURL;
             // if a user is authenticated send request to bring private and public stats
             if(User.Identity.IsAuthenticated)
             {
+                countURL = "StatsData/GetAllStatsCount/" + User.Identity.GetUserId();
                 url = "StatsData/GetAllStats/" + User.Identity.GetUserId();
             }
             else
             {
                 // bring only public stats
+                countURL = "StatsData/GetPublicStatsCount";
                 url = "StatsData/GetPublicStats";
             }
-            HttpResponseMessage response = client.GetAsync(url).Result;
+            HttpResponseMessage response = client.GetAsync(countURL).Result;
+            // HttpResponseMessage response = client.GetAsync(url).Result;
+
             if (response.IsSuccessStatusCode)
             {
-                IEnumerable<StatDto> PublicStats = response.Content.ReadAsAsync<IEnumerable<StatDto>>().Result;
-                return View(PublicStats);
+
+                var StatCount = response.Content.ReadAsAsync<int>().Result;
+
+                int PerPage = 5;
+                // Determines the maximum number of pages (rounded up), assuming a page 0 start.
+                int MaxPage = (int)Math.Ceiling((decimal)StatCount / PerPage) - 1;
+
+                // Lower boundary for Max Page
+                if (MaxPage < 0) MaxPage = 0;
+                // Lower boundary for Page Number
+                if (PageNum < 0) PageNum = 0;
+                // Upper Bound for Page Number
+                if (PageNum > MaxPage) PageNum = MaxPage;
+
+                // The Record Index of our Page Start
+                int StartIndex = PerPage * PageNum;
+
+                //Helps us generate the HTML which shows "Page 1 of ..." on the list view
+                ViewData["PageNum"] = PageNum;
+                ViewData["totalCount"] = StatCount;
+                ViewData["PerPage"] = PerPage;
+                ViewData["PageSummary"] = " " + (PageNum + 1) + " of " + (MaxPage + 1) + " ";
+
+                url = url + "/" + StartIndex + "/" + PerPage;
+                response = client.GetAsync(url).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    IEnumerable<StatDto> PublicStats = response.Content.ReadAsAsync<IEnumerable<StatDto>>().Result;
+                    return View(PublicStats);
+                }
+                else
+                {
+                    return RedirectToAction("Error");
+                }
+
             }
             else
             {

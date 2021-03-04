@@ -28,7 +28,7 @@ namespace AnyStats___5204_PassionProject_n01442097.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("name=AnyStats", throwIfV1Schema: false)
         {
         }
 

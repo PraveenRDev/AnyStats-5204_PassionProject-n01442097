@@ -5,7 +5,10 @@
 }
 
 <h2>Edit Statistics</h2>
-@Html.ActionLink("Back to Details", "Details", new { id = Model.stat.StatId })
+<div class="btn btn-default submit">
+    @Html.ActionLink("Back to Details", "Details", new { id = Model.stat.StatId })
+</div>
+
 @using (Html.BeginForm("Edit", "Stats", new { id = Model.stat.StatId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(model => model.stat.StatId, new { Name = "StatId" })
@@ -33,7 +36,7 @@
 
     <div class="form-group">
         <label for="public">Public</label>
-        <input type="checkbox" id="public" value="true" name="isPublic" checked="@Model.stat.isPublic ? 'checked' : ''"/>
+        <input type="checkbox" id="public" value="true" name="isPublic" checked=@Model.stat.isPublic/>
     </div>
 
     <div id="divCont">
@@ -64,6 +67,6 @@
             }
         }
     </div>
-    <input type="submit" value="Edit" class="btn btn-success"/>
+    <input type="submit" value="Edit" class="btn btn-success submit"/>
 }
 <script src="~/Scripts/stats.js"></script>

@@ -32,3 +32,16 @@ label{
 .stat-list{
     padding-top: 2em;
 }
+
+.submit{
+    margin: 15px 0;
+}
+
+.pagination{
+    color: slategray;
+}
+
+.stat-list {
+    font-size: 1.5em;
+    color: slategray;
+}

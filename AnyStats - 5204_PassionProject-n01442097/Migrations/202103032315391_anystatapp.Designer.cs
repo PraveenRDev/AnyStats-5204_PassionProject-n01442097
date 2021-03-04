@@ -7,13 +7,13 @@ namespace AnyStats___5204_PassionProject_n01442097.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class doubleyValue : IMigrationMetadata
+    public sealed partial class anystatapp : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(doubleyValue));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(anystatapp));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102190107112_double yValue"; }
+            get { return "202103032315391_anystatapp"; }
         }
         
         string IMigrationMetadata.Source
