@@ -1,6 +1,6 @@
 # AnyStats-5204_PassionProject-n01442097
 ## AnyStats
-The app allows users to create statistics both private and public and it represents them in charts.
+The app allows users to create statistics both private and public and the information would be represented in charts.
 
 ### FEATURES
 1. Users can create, update, delete and view statistics 
