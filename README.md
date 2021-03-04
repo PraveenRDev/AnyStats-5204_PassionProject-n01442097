@@ -21,6 +21,7 @@ the connectionStrings should look similar this, if you encounter any errors chan
 <connectionStrings>
 	  <add name="AnyStats" connectionString="Data Source=(localdb)\MSSQLLocalDB; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|AnyStats03- 03-2021.mdf"providerName="System.Data.SqlClient" />
 </connectionStrings> 
+
 3. Clean, Rebuild project to avoid roslyn error.
 4. Verify the App_Data folder is created in the file explorer where the solution exists.
 5. In Tools > Nuget Package Manager > Package Manager Console enter following commands
