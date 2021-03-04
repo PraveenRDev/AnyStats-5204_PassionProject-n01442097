@@ -27,11 +27,11 @@ the connectionStrings should look similar this, if you encounter any errors chan
 4. Verify the App_Data folder is created in the file explorer where the solution exists.
 5. In Tools > Nuget Package Manager > Package Manager Console enter following commands
   
-  enable-migrations
+  &nbsp;&nbsp;enable-migrations
   
-  add-migration {migration_name}
+  &nbsp;&nbsp;add-migration {migration_name}
   
-  update-database
+  &nbsp;&nbsp;update-database
 
 ### References
 Varsity:- https://github.com/christinebittle/varsity_mvp
